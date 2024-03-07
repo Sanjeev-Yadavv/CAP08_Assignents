@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calculator</title>
+    <style>
+        body{
+            font-size: 4rem;
+        }
+        .btn{
+            font-size: 2rem;
+        }
+        input{
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="number" id="1st_number" placeholder="enter number here">
+    <input type="number" id="2nd_number" placeholder="enter number here">
+  <div id="subconatainer">
+    <button class="btn" onclick="Add()">Add</button>
+    <button class="btn" onclick="Subtract()">Subtract</button>
+    <button class="btn" onclick="Multiply()">Multiply</button>
+    <button class="btn" onclick="Divide()">Divide</button>
+  </div>
+    </div>
+</body>
+</html>
+<script>
+    //  var a = document.getElementById("1st_number").value
+    // var b = document.getElementById("2nd_number").value
+    function Add(){
+        let c =  parseFloat(document.getElementById("1st_number").value)
+        let h= parseFloat(document.getElementById("2nd_number").value)
+        alert(c+h)
+    //    alert(c)
+    }
+    function Subtract(){
+        let d =  document.getElementById("1st_number").value-document.getElementById("2nd_number").value
+        alert(d)
+    }
+    function Multiply(){
+        let e =  document.getElementById("1st_number").value*document.getElementById("2nd_number").value
+        alert(e)
+    }
+    function Divide(){
+        let f =  document.getElementById("1st_number").value/document.getElementById("2nd_number").value
+        alert(f)
+    }
+</script>
