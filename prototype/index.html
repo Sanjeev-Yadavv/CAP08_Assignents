@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Vehicle(brand,model,speed,fuelType){
+        this.brand = brand;
+        this.model = model;
+        this.speed = speed;
+        this.fuelType = fuelType;
+    }
+
+    Vehicle.prototype.accelerate = function (){
+        this.speed+=10;
+        console.log(`The Speed is Increased by ${this.speed}`)
+    }
+    Vehicle.prototype.brake = function(){
+        this.speed-=10;
+        console.log(`the speed is decreased by ${this.speed}`)
+    }
+    Vehicle.prototype.reFuel = function(){
+        console.log(`vehicle is refuling`)
+    }
+
+    let newVehicle = new Vehicle("Maruti","A6",50,"Petrol")
+    // console.log(newVehicle)
+    function Car(brand,model,speed,fuelType,numberOfWheels){
+        Vehicle.call(this,brand,model,speed,fuelType)
+        this.numberOfWheels = numberOfWheels;
+    }
+    Car.prototype.honk = function(){
+        console.log(`honking sound`)
+    }
+    Car.prototype = Object.create(Vehicle.prototype)
+    Car.prototype.constructor = Car
+  
+
+    function Aeroplane(brand,model,speed,fuelType,numberOfEngines,hasLandingGears){
+        Vehicle.call(this,brand,model,speed,fuelType)
+        this.numberOfEngines = numberOfEngines;
+        this.hasLandingGears = hasLandingGears;
+    }
+    Aeroplane.prototype.takeoff = function(){
+        console.log("airoplane is taking off")
+    }
+       Object.setPrototypeOf(Aeroplane.prototype,Vehicle.prototype)
+    
+    Aeroplane.prototype.constructor = Aeroplane
+       let newAeroplane = new Aeroplane("AirIndia","E9.3",300,"WhiteFuel",4,"YEs")
+   newAeroplane.brake();
+    newAeroplane.accelerate();
+    let newCar = new Car("Maruti","A6",50,"Petrol",4)
+    newCar.brake();
+    newCar.reFuel();
+    newCar.brake();
+// Testing
+// let newAeroplane = new Aeroplane("AirIndia", "E9.3", 300, "WhiteFuel", 4, "Yes");
+// newAeroplane.brake(); // Use instance method
+// newAeroplane.accelerate(); // Use instance method
+
+// let newCar = new Car("Maruti", "A6", 50, "Petrol", 4);
+// newCar.brake(); // Use instance method
+// newCar.reFuel(); // Use instance method
+// newCar.brake(); // Use instance method
+
+     
+
+
+
+
+
+
+</script>
+</html>
