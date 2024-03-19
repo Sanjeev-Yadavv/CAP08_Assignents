@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 7rem;
+        }
+        button{
+            margin: 20px 0px 0px 50px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" min="0"  placeholder="enter hours" id="hours">
+    <input type="number" min="0" max="59" placeholder="enter minutes" id="minutes">
+    <input type="number" min="0" max="59" placeholder="enter seconds" id="seconds"><br>
+    <button onclick="start()" id="start">Start</button>
+    <button onclick="pause()" id="pause">Pause</button>
+    <button onclick="reset()" id="reset">Reset</button>
+
+</body>
+<script src="/Asynchronus_3/script.js"></script>
+</html>
