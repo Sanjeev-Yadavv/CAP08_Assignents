@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delevery Website</title>
+    <style>
+        .main{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .container{
+            border: 2px solid red;
+        }
+        .afterOrder{
+            border: 2px solid black;
+        }
+        img{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+   <div class="main">
+    <div class="container">
+        <h2>Your Favourite Food is Here</h2>
+        <input type="checkbox" class="food" value="Burger"> Burger <br>
+        <input type="checkbox" class="food" value="Momos"> Momos <br>
+        <input type="checkbox" class="food" value="Paneer_tikka"> Paneer Tikka <br>
+        <input type="checkbox" class="food" value="Fries"> Fries <br><br>
+        <button onclick="orderFood()">Order Food</button>
+    </div>
+
+    <div class="afterOrder">
+        <div id="order-id">
+
+        </div>
+        <div id="order-food">
+
+        </div>
+    </div>
+   </div>
+</body>
+<script src="/script.js"></script>
+
+</html>
