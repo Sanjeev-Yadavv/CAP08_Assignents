@@ -1,0 +1,136 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height: 80vh;
+            width: 90vw;
+            border: 2px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sliderContainer">
+            <img src="https://cdn.pixabay.com/photo/2023/06/13/11/45/landscape-8060760_1280.jpg" alt="">
+            <img src="https://cdn.pixabay.com/photo/2024/02/16/19/22/green-parrot-8578205_1280.jpg" alt="">
+            <img src="https://cdn.pixabay.com/photo/2023/10/16/01/40/aviation-8318208_1280.jpg" alt="">
+            <img src="https://cdn.pixabay.com/photo/2023/04/29/09/51/polana-kalatowki-7958161_1280.jpg" alt="">
+            <img src="https://cdn.pixabay.com/photo/2023/08/19/08/27/butterfly-8200041_1280.jpg" alt="">
+            
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slider</title>
+<style>
+  .slider-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+</style>
+</head>
+<body>
+<div class="slider-container">
+  <div class="slider">
+    <div class="slide"><img src="https://cdn.pixabay.com/photo/2023/06/13/11/45/landscape-8060760_1280.jpg" alt="Image 1"></div>
+    <div class="slide"><img src="https://cdn.pixabay.com/photo/2024/02/16/19/22/green-parrot-8578205_1280.jpg" alt="Image 2"></div>
+    <!-- Add more slides here -->
+  </div>
+  <button class="slider-button prevnext prev">&#10094;</button>
+  <button class="slider-button prevnext next">&#10095;</button>
+  <button class="slider-button startstop">Start</button>
+</div>
+
+<script>
+  const sliderContainer = document.querySelector('.slider-container');
+  const slider = document.querySelector('.slider');
+  const slides = document.querySelectorAll('.slide');
+  const prevNextButtons = document.querySelectorAll('.prevnext');
+  const startStopButton = document.querySelector('.startstop');
+  let interval;
+  let index = 0;
+  let isPlaying = false;
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    updateSlide();
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlide();
+  }
+
+  function updateSlide() {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function togglePlay() {
+    if (isPlaying) {
+      clearInterval(interval);
+      isPlaying = false;
+      startStopButton.textContent = 'Start';
+    } else {
+      interval = setInterval(nextSlide, 2000);
+      isPlaying = true;
+      startStopButton.textContent = 'Stop';
+    }
+  }
+
+  prevNextButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      clearInterval(interval);
+      isPlaying = false;
+      startStopButton.textContent = 'Start';
+    });
+  });
+
+  startStopButton.addEventListener('click', togglePlay);
+
+  // Initial call to start the slideshow
+  togglePlay();
+</script>
+</body>
+</html>
